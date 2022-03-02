@@ -12,6 +12,7 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.json.JSONObject;
 
+import javax.net.ssl.HttpsURLConnection;
 import java.io.*;
 import java.net.URL;
 import java.net.URLConnection;
@@ -215,7 +216,6 @@ public class TaskToParse extends Task<Void> {
                 }
                 updateProgress(0.45 + i2, 1);
                 i2 += pathOfSecondPart;
-//                Thread.sleep(1000);
             }
         }
         updateProgress(0.9, 1);
@@ -235,7 +235,14 @@ public class TaskToParse extends Task<Void> {
         StringBuilder x = new StringBuilder();
         try {
             URL url = new URL(urlAddress);
-            URLConnection urlConnection = url.openConnection();
+            HttpsURLConnection urlConnection = (HttpsURLConnection)url.openConnection();
+
+            if (urlConnection.getResponseCode() == 503) {
+                System.out.println(urlConnection.getResponseCode());
+                Thread.sleep(1500);
+                url = new URL(urlAddress);
+                urlConnection = (HttpsURLConnection)url.openConnection();
+            }
 
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
             String line;
@@ -243,7 +250,7 @@ public class TaskToParse extends Task<Void> {
             while ((line = bufferedReader.readLine()) != null) {
                 x.append(line).append("\n");
             }
-        } catch (IOException e) {
+        } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
         return x.toString();
