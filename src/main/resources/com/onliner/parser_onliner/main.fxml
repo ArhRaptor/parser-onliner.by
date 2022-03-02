@@ -204,16 +204,30 @@
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <DatePicker fx:id="dateStart" editable="false" layoutX="75.0" layoutY="135.0" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="135.0" />
-                  <DatePicker fx:id="dateEnd" editable="false" layoutX="75.0" layoutY="171.0" AnchorPane.topAnchor="165.0" />
-                  <Label layoutX="105.0" layoutY="91.0" prefHeight="38.0" prefWidth="115.0" text="Период сбора отзывов:" textAlignment="CENTER" wrapText="true" AnchorPane.leftAnchor="105.0" AnchorPane.topAnchor="90.0" />
-                  <Label layoutX="53.0" layoutY="139.0" text="С:" AnchorPane.leftAnchor="50.0" />
-                  <Label layoutX="52.0" layoutY="169.0" text="По:" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="169.0" />
-                  <CheckBox fx:id="isTextReview" layoutX="50.0" layoutY="220.0" mnemonicParsing="false" text="Собирать тексты отзывы" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="220.0">
+                  <CheckBox fx:id="isOnSale" layoutX="50.0" layoutY="74.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="194.0" text="Собирать данные только по товару &quot;в наличии&quot;" textAlignment="CENTER" wrapText="true" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="555.0" AnchorPane.topAnchor="74.0">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </CheckBox>
+                  <CheckBox fx:id="isTextReview" layoutX="428.0" layoutY="85.0" mnemonicParsing="false" text="Собирать тексты отзывы" AnchorPane.leftAnchor="428.0" AnchorPane.topAnchor="85.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </CheckBox>
+                  <DatePicker fx:id="dateStart" editable="false" layoutX="75.0" layoutY="206.0" visible="false" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="206.0" />
+                  <DatePicker fx:id="dateEnd" editable="false" layoutX="75.0" layoutY="236.0" visible="false" AnchorPane.topAnchor="236.0" />
+                  <Label fx:id="h1" layoutX="105.0" layoutY="161.0" prefHeight="38.0" prefWidth="115.0" text="Период сбора отзывов:" textAlignment="CENTER" visible="false" wrapText="true" AnchorPane.leftAnchor="105.0" AnchorPane.topAnchor="161.0">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Label>
+                  <Label fx:id="h2" layoutX="50.0" layoutY="210.0" text="С:" visible="false" AnchorPane.leftAnchor="50.0">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Label>
+                  <Label fx:id="h3" layoutX="50.0" layoutY="240.0" text="По:" visible="false" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="240.0">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Label>
                   <CheckBox fx:id="isId" layoutX="49.0" layoutY="266.0" mnemonicParsing="false" text="ID товара" visible="false" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="270.0">
                      <font>
                         <Font size="14.0" />
@@ -261,11 +275,6 @@
                   </CheckBox>
                   <Button fx:id="selAllReview" layoutX="332.0" layoutY="268.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="154.0" text="Выбрать все" visible="false" AnchorPane.leftAnchor="330.0" AnchorPane.topAnchor="268.0" />
                   <Button fx:id="unselAllReview" layoutX="339.0" layoutY="303.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="154.0" text="Снять выделение" visible="false" AnchorPane.leftAnchor="330.0" />
-                  <CheckBox fx:id="isOnSale" layoutX="330.0" layoutY="349.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="194.0" text="Собирать отзывы только по товару &quot;в наличии&quot;" textAlignment="CENTER" visible="false" wrapText="true" AnchorPane.rightAnchor="276.0" AnchorPane.topAnchor="349.0">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </CheckBox>
                </children></AnchorPane>
         </content>
       </Tab>

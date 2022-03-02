@@ -3,9 +3,7 @@ package com.onliner.parser_onliner;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
 import javafx.stage.FileChooser;
-import javafx.stage.Stage;
 
 import java.io.File;
 import java.text.ParseException;
@@ -28,6 +26,9 @@ public class Controller {
     private Tab categoriesTab;
 
     @FXML
+    private Button chooseBtn;
+
+    @FXML
     private DatePicker dateEnd;
 
     @FXML
@@ -37,13 +38,13 @@ public class Controller {
     private Tab finalTab;
 
     @FXML
-    private Button startBtn;
+    private Label h1;
 
     @FXML
-    private Button chooseBtn;
+    private Label h2;
 
     @FXML
-    private CheckBox isCategory;
+    private Label h3;
 
     @FXML
     private CheckBox isAddTextReview;
@@ -59,6 +60,9 @@ public class Controller {
 
     @FXML
     private CheckBox isBlend;
+
+    @FXML
+    private CheckBox isCategory;
 
     @FXML
     private CheckBox isCoffeeGrinders;
@@ -130,10 +134,10 @@ public class Controller {
     private CheckBox isMix;
 
     @FXML
-    private CheckBox isOnSale;
+    private CheckBox isMulticoockers;
 
     @FXML
-    private CheckBox isMulticoockers;
+    private CheckBox isOnSale;
 
     @FXML
     private CheckBox isRadioClock;
@@ -176,6 +180,9 @@ public class Controller {
 
     @FXML
     private Button selAllReview;
+
+    @FXML
+    private Button startBtn;
 
     @FXML
     private Label textProgress;
@@ -309,7 +316,11 @@ public class Controller {
                 isLink.setVisible(true);
                 selAllReview.setVisible(true);
                 unselAllReview.setVisible(true);
-                isOnSale.setVisible(true);
+                h1.setVisible(true);
+                h2.setVisible(true);
+                h3.setVisible(true);
+                dateStart.setVisible(true);
+                dateEnd.setVisible(true);
             } else {
                 isId.setVisible(false);
                 isCategory.setVisible(false);
@@ -323,7 +334,11 @@ public class Controller {
                 selAllReview.setVisible(false);
                 unselAllReview.setVisible(false);
                 selectAllItemsReview(false);
-                isOnSale.setVisible(false);
+                h1.setVisible(false);
+                h2.setVisible(false);
+                h3.setVisible(false);
+                dateStart.setVisible(false);
+                dateEnd.setVisible(false);
             }
         });
         //Кнопка выбрать все в закладке с категориями
