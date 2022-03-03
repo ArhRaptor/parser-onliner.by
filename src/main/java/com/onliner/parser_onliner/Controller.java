@@ -703,7 +703,7 @@ public class Controller {
             TaskToParse tsk;
 
             if (isTextReview.isSelected()) {
-                Set<CheckBox> setCheckBox = new HashSet<>();
+                ArrayList<CheckBox> setCheckBox = new ArrayList<>();
                 setCheckBox.add(isId);
                 setCheckBox.add(isCategory);
                 setCheckBox.add(isArticle);

@@ -65,6 +65,10 @@ public class Reviews {
         return disadvantages;
     }
 
+    public String getDateReview() {
+        return dateReview;
+    }
+
     public int getRating() {
         return rating;
     }
