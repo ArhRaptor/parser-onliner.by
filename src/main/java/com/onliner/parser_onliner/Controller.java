@@ -713,9 +713,9 @@ public class Controller {
                 setCheckBox.add(isRating);
                 setCheckBox.add(isDateReview);
                 setCheckBox.add(isLink);
-                tsk = new TaskToParse(true, linksList, isOnSale.isSelected(), dateStart, dateEnd, setCheckBox, brendTab, categoriesTab, reviewsTab, startBtn, chooseBtn, pathToSave.getText().trim());
+                tsk = new TaskToParse(true, linksList, isOnSale.isSelected(), dateStart, dateEnd, setCheckBox, brendTab, categoriesTab, reviewsTab, startBtn, chooseBtn, pathToSave.getText().trim(), progressBar, textProgress);
             } else {
-                tsk = new TaskToParse(false, linksList, isOnSale.isSelected(), brendTab, categoriesTab, reviewsTab, startBtn, chooseBtn, pathToSave.getText().trim());
+                tsk = new TaskToParse(false, linksList, isOnSale.isSelected(), brendTab, categoriesTab, reviewsTab, startBtn, chooseBtn, pathToSave.getText().trim(), progressBar, textProgress);
             }
 
             Thread thread = new Thread(tsk);

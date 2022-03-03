@@ -11,12 +11,10 @@ import org.json.JSONObject;
 
 import javax.net.ssl.HttpsURLConnection;
 import java.io.*;
-import java.net.ConnectException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Optional;
 
 public class TaskToParse extends Task<Void>{
 
@@ -32,8 +30,11 @@ public class TaskToParse extends Task<Void>{
     private Button startButton;
     private Button chooseButton;
     private String pathToSave;
+    private ProgressBar progressBar;
+    private Label textProgress;
 
-    public TaskToParse(boolean isCollectReview, ArrayList<String> linksCategories, boolean isOnSale, DatePicker dateStart, DatePicker dateEnd, ArrayList<CheckBox> setCheckBox, Tab brendTab, Tab categoriesTab, Tab reviewTab, Button startButton, Button chooseButton, String pathToSave) {
+    public TaskToParse(boolean isCollectReview, ArrayList<String> linksCategories, boolean isOnSale, DatePicker dateStart, DatePicker dateEnd, ArrayList<CheckBox> setCheckBox,
+                       Tab brendTab, Tab categoriesTab, Tab reviewTab, Button startButton, Button chooseButton, String pathToSave, ProgressBar progressBar, Label textProgress) {
         this.isCollectReview = isCollectReview;
         this.linksCategories = linksCategories;
         this.isOnSale = isOnSale;
@@ -46,9 +47,11 @@ public class TaskToParse extends Task<Void>{
         this.startButton = startButton;
         this.chooseButton = chooseButton;
         this.pathToSave = pathToSave;
+        this.progressBar = progressBar;
+        this.textProgress = textProgress;
     }
 
-    public TaskToParse(boolean isCollectReview, ArrayList<String> linksCategories, boolean isOnSale, Tab brendTab, Tab categoriesTab, Tab reviewTab, Button startButton, Button chooseButton, String pathToSave) {
+    public TaskToParse(boolean isCollectReview, ArrayList<String> linksCategories, boolean isOnSale, Tab brendTab, Tab categoriesTab, Tab reviewTab, Button startButton, Button chooseButton, String pathToSave, ProgressBar progressBar, Label textProgress) {
         this.isCollectReview = isCollectReview;
         this.linksCategories = linksCategories;
         this.isOnSale = isOnSale;
@@ -58,6 +61,8 @@ public class TaskToParse extends Task<Void>{
         this.startButton = startButton;
         this.chooseButton = chooseButton;
         this.pathToSave = pathToSave;
+        this.progressBar = progressBar;
+        this.textProgress = textProgress;
     }
 
     @Override
@@ -226,6 +231,8 @@ public class TaskToParse extends Task<Void>{
         reviewTab.setDisable(false);
         startButton.setDisable(false);
         chooseButton.setDisable(false);
+        progressBar.setVisible(false);
+        textProgress.setVisible(false);
         return null;
     }
 
@@ -396,55 +403,55 @@ public class TaskToParse extends Task<Void>{
             XSSFRow headReview = sheetWithReview.createRow(startRowWithReview);
 
             for (CheckBox check : setCheckBox) {
-                if (check.getText().equals("ID товара")) {
+                if (check.isSelected() && check.getText().equals("ID товара")) {
                     XSSFCell idHeadReview = headReview.createCell(++startColumnWithReview);
                     idHeadReview.setCellValue("Код товара");
                     headStyle.setWrapText(true);
                     sheetWithReview.setColumnWidth(startColumnWithReview, 3000);
                     idHeadReview.setCellStyle(headStyle);
-                } else if (check.getText().equals("Категория товара")) {
+                } else if (check.isSelected() && check.getText().equals("Категория товара")) {
                     XSSFCell categoryHeadReview = headReview.createCell(++startColumnWithReview);
                     categoryHeadReview.setCellValue("Категория бытовой техники");
                     headStyle.setWrapText(true);
                     sheetWithReview.setColumnWidth(startColumnWithReview, 5000);
                     categoryHeadReview.setCellStyle(headStyle);
-                } else if (check.getText().equals("Артикул")) {
+                } else if (check.isSelected() && check.getText().equals("Артикул")) {
                     XSSFCell nameArticleReview = headReview.createCell(++startColumnWithReview);
                     nameArticleReview.setCellValue("Артикул");
                     headStyle.setWrapText(true);
                     sheetWithReview.setColumnWidth(startColumnWithReview, 5000);
                     nameArticleReview.setCellStyle(headStyle);
-                } else if (check.getText().equals("Полное наименование")) {
+                } else if (check.isSelected() && check.getText().equals("Полное наименование")) {
                     XSSFCell nameHeadReview = headReview.createCell(++startColumnWithReview);
                     nameHeadReview.setCellValue("Наименование");
                     headStyle.setWrapText(true);
                     sheetWithReview.setColumnWidth(startColumnWithReview, 5000);
                     nameHeadReview.setCellStyle(headStyle);
-                } else if (check.getText().equals("Автор отзыва")) {
+                } else if (check.isSelected() && check.getText().equals("Автор отзыва")) {
                     XSSFCell authorHeadReview = headReview.createCell(++startColumnWithReview);
                     authorHeadReview.setCellValue("Автор отзыва");
                     headStyle.setWrapText(true);
                     sheetWithReview.setColumnWidth(startColumnWithReview, 5000);
                     authorHeadReview.setCellStyle(headStyle);
-                } else if (check.getText().equals("Текст отзыва")) {
+                } else if (check.isSelected() && check.getText().equals("Текст отзыва")) {
                     XSSFCell textHeadReview = headReview.createCell(++startColumnWithReview);
                     textHeadReview.setCellValue("Текст отзыва");
                     headStyle.setWrapText(true);
                     sheetWithReview.setColumnWidth(startColumnWithReview, 15000);
                     textHeadReview.setCellStyle(headStyle);
-                } else if (check.getText().equals("Оценка")) {
+                } else if (check.isSelected() && check.getText().equals("Оценка")) {
                     XSSFCell ratingHeadReview = headReview.createCell(++startColumnWithReview);
                     ratingHeadReview.setCellValue("Оценка");
                     headStyle.setWrapText(true);
                     sheetWithReview.setColumnWidth(startColumnWithReview, 2500);
                     ratingHeadReview.setCellStyle(headStyle);
-                } else if (check.getText().equals("Дата отзыва")) {
+                } else if (check.isSelected() && check.getText().equals("Дата отзыва")) {
                     XSSFCell dateHeadReview = headReview.createCell(++startColumnWithReview);
                     dateHeadReview.setCellValue("Дата отзыва");
                     headStyle.setWrapText(true);
                     sheetWithReview.setColumnWidth(startColumnWithReview, 3000);
                     dateHeadReview.setCellStyle(headStyle);
-                } else if (check.getText().equals("Ссылка на сайте")) {
+                } else if (check.isSelected() && check.getText().equals("Ссылка на сайте")) {
                     XSSFCell linkHeadReview = headReview.createCell(++startColumnWithReview);
                     linkHeadReview.setCellValue("Текст отзыва");
                     headStyle.setWrapText(true);
@@ -458,55 +465,55 @@ public class TaskToParse extends Task<Void>{
                 XSSFRow content = sheetWithReview.createRow(startRowContentWithReview);
 
                 for (CheckBox check : setCheckBox) {
-                    if (check.getText().equals("ID товара")) {
+                    if (check.isSelected() && check.getText().equals("ID товара")) {
                         XSSFCell cell = content.createCell(++startColumnContentWithReview);
                         contentStyle.setVerticalAlignment(VerticalAlignment.TOP);
                         contentStyle.setWrapText(true);
                         cell.setCellValue(review.getId());
                         cell.setCellStyle(contentStyle);
-                    } else if (check.getText().equals("Категория товара")) {
+                    } else if (check.isSelected() && check.getText().equals("Категория товара")) {
                         XSSFCell cell = content.createCell(++startColumnContentWithReview);
                         contentStyle.setVerticalAlignment(VerticalAlignment.TOP);
                         contentStyle.setWrapText(true);
                         cell.setCellValue(review.getCategory());
                         cell.setCellStyle(contentStyle);
-                    } else if (check.getText().equals("Артикул")) {
+                    } else if (check.isSelected() && check.getText().equals("Артикул")) {
                         XSSFCell cell = content.createCell(++startColumnContentWithReview);
                         contentStyle.setVerticalAlignment(VerticalAlignment.TOP);
                         contentStyle.setWrapText(true);
                         cell.setCellValue(review.getArticle());
                         cell.setCellStyle(contentStyle);
-                    } else if (check.getText().equals("Полное наименование")) {
+                    } else if (check.isSelected() && check.getText().equals("Полное наименование")) {
                         XSSFCell cell = content.createCell(++startColumnContentWithReview);
                         contentStyle.setVerticalAlignment(VerticalAlignment.TOP);
                         contentStyle.setWrapText(true);
                         cell.setCellValue(review.getFullName());
                         cell.setCellStyle(contentStyle);
-                    } else if (check.getText().equals("Автор отзыва")) {
+                    } else if (check.isSelected() && check.getText().equals("Автор отзыва")) {
                         XSSFCell cell = content.createCell(++startColumnContentWithReview);
                         contentStyle.setVerticalAlignment(VerticalAlignment.TOP);
                         contentStyle.setWrapText(true);
                         cell.setCellValue(review.getAuthor());
                         cell.setCellStyle(contentStyle);
-                    } else if (check.getText().equals("Текст отзыва")) {
+                    } else if (check.isSelected() && check.getText().equals("Текст отзыва")) {
                         XSSFCell cell = content.createCell(++startColumnContentWithReview);
                         contentStyle.setVerticalAlignment(VerticalAlignment.TOP);
                         contentStyle.setWrapText(true);
                         cell.setCellValue(review.getSummary() + "\n" + review.getTextReview() + "\n" + review.getDignity() + "\n" + review.getDisadvantages());
                         cell.setCellStyle(contentStyle);
-                    } else if (check.getText().equals("Оценка")) {
+                    } else if (check.isSelected() && check.getText().equals("Оценка")) {
                         XSSFCell cell = content.createCell(++startColumnContentWithReview);
                         contentStyle.setVerticalAlignment(VerticalAlignment.TOP);
                         contentStyle.setWrapText(true);
                         cell.setCellValue(review.getRating());
                         cell.setCellStyle(contentStyle);
-                    } else if (check.getText().equals("Дата отзыва")) {
+                    } else if (check.isSelected() && check.getText().equals("Дата отзыва")) {
                         XSSFCell cell = content.createCell(++startColumnContentWithReview);
                         contentStyle.setVerticalAlignment(VerticalAlignment.TOP);
                         contentStyle.setWrapText(true);
                         cell.setCellValue(review.getDateReview());
                         cell.setCellStyle(contentStyle);
-                    } else if (check.getText().equals("Ссылка на сайте")) {
+                    } else if (check.isSelected() && check.getText().equals("Ссылка на сайте")) {
                         XSSFCell cell = content.createCell(++startColumnContentWithReview);
                         contentStyle.setVerticalAlignment(VerticalAlignment.TOP);
                         contentStyle.setWrapText(true);
