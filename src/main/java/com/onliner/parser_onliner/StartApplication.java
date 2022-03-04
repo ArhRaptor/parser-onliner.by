@@ -17,7 +17,7 @@ public class StartApplication extends Application {
         stage.setTitle("Parser for Onliner.by");
         stage.setFullScreen(false);
         stage.setResizable(false);
-//        stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/image/logo.png"))));
+        stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/image/logo.png"))));
         stage.setScene(scene);
         stage.show();
     }

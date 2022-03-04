@@ -3,7 +3,9 @@ package com.onliner.parser_onliner;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 import java.io.File;
 import java.text.ParseException;
@@ -472,8 +474,8 @@ public class Controller {
             Alert alert = new Alert(Alert.AlertType.INFORMATION, "Дата начала сбора отзывов позже даты его завершения. \nПроверьте корректность ввода дат!");
             alert.setTitle("Ошибка ввода дат!!!");
             alert.setHeaderText(null);
-//            Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
-//            stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/image/logo.png"))));
+            Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+            stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/image/logo.png"))));
             Optional<ButtonType> result = alert.showAndWait();
             if (result.isPresent() && result.get() == ButtonType.OK) event.consume();
         }
@@ -481,8 +483,8 @@ public class Controller {
             Alert alert = new Alert(Alert.AlertType.INFORMATION, "Не выбран путь к файлу и наименование файла.");
             alert.setTitle("Внимание!!!");
             alert.setHeaderText(null);
-//            Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
-//            stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/image/logo.png"))));
+            Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+            stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/image/logo.png"))));
             Optional<ButtonType> result = alert.showAndWait();
             if (result.isPresent() && result.get() == ButtonType.OK) event.consume();
         } else {
@@ -739,8 +741,8 @@ public class Controller {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION, "Не выбран путь к файлу и наименование файла.");
                 alert.setTitle("Внимание!!!");
                 alert.setHeaderText(null);
-//                Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
-//                stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/image/logo.png"))));
+                Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/image/logo.png"))));
                 Optional<ButtonType> result = alert.showAndWait();
                 if (result.isPresent() && result.get() == ButtonType.OK) event.consume();
             }

@@ -137,6 +137,7 @@ public class TaskToParse extends Task<Void>{
 
         double pathOfSecondPart = 0.45 / nomenclatures.size();
         double i2 = pathOfFirstPart;
+
         //Сбор самих отзывов
         if (isCollectReview) {
             for (Nomenclatures nom : nomenclatures) {
@@ -171,6 +172,9 @@ public class TaskToParse extends Task<Void>{
                         category = nom.getCategory();
                         article = nom.getArticle();
                         fullName = nom.getFullName();
+                        dignity = "Достоинства: ";
+                        disadvantages = "Недостатки: ";
+
                         author = object.getJSONArray("reviews").getJSONObject(i).getJSONObject("author").getString("name");
                         summary = object.getJSONArray("reviews").getJSONObject(i).getString("summary");
                         textReview = object.getJSONArray("reviews").getJSONObject(i).getString("text");
@@ -199,6 +203,9 @@ public class TaskToParse extends Task<Void>{
                             category = nom.getCategory();
                             article = nom.getArticle();
                             fullName = nom.getFullName();
+                            dignity = "Достоинства: ";
+                            disadvantages = "Недостатки: ";
+
                             author = object2.getJSONArray("reviews").getJSONObject(j).getJSONObject("author").getString("name");
                             summary = object2.getJSONArray("reviews").getJSONObject(j).getString("summary");
                             textReview = object2.getJSONArray("reviews").getJSONObject(j).getString("text");
@@ -524,11 +531,11 @@ public class TaskToParse extends Task<Void>{
                 startRowContentWithReview++;
             }
         }
-        updateProgress(1, 1);
-        updateMessage("Файл " + pathToSave + " готов!!!");
-
         FileOutputStream fos = new FileOutputStream(pathToSave);
         wb.write(fos);
         fos.close();
+
+        updateProgress(1, 1);
+        updateMessage("Файл " + pathToSave + " готов!!!");
     }
 }
