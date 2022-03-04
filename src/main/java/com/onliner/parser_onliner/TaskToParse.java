@@ -136,7 +136,7 @@ public class TaskToParse extends Task<Void>{
         updateProgress(0.45, 1);
 
         double pathOfSecondPart = 0.45 / nomenclatures.size();
-        double i2 = pathOfFirstPart;
+        double i2 = pathOfSecondPart;
 
         //Сбор самих отзывов
         if (isCollectReview) {
