@@ -122,7 +122,7 @@ public class TaskToParse extends Task<Void>{
                         linkToReview = jsonObject.getJSONArray("products").getJSONObject(j).getJSONObject("reviews").getString("html_url");
                         linkToReviewJson = jsonObject.getJSONArray("products").getJSONObject(j).getJSONObject("reviews").getString("url");
                         countReview = jsonObject.getJSONArray("products").getJSONObject(j).getJSONObject("reviews").getInt("count");
-                        averageRating = Double.parseDouble(String.valueOf(jsonObject.getJSONArray("products").getJSONObject(i).getJSONObject("reviews").getInt("rating"))) / 10;
+                        averageRating = Double.parseDouble(String.valueOf(jsonObject.getJSONArray("products").getJSONObject(j).getJSONObject("reviews").getInt("rating"))) / 10;
 
                         updateMessage("Запись данных по " + fullName);
 
